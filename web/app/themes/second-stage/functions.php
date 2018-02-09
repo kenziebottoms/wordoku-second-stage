@@ -220,6 +220,23 @@ function my_acf_google_map_api( $api ){
 
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
+// SHOW CUSTOM POST TYPE
+
+function create_post_type() {
+    register_post_type( 'show',
+        array(
+            'labels' => array(
+                'name' => __( 'Shows' ),
+                'singular_name' => __( 'Show' )
+            ),
+            'public' => true,
+            'has_archive' => false,
+            'menu_icon' => 'dashicons-tickets-alt',
+        )
+    );
+}
+add_action( 'init', 'create_post_type' );
+
 /**
  * Implement the Custom Header feature.
  */
