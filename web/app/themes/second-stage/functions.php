@@ -210,7 +210,15 @@ function wp_bootstrap_starter_password_form() {
 }
 add_filter( 'the_password_form', 'wp_bootstrap_starter_password_form' );
 
+function my_acf_google_map_api( $api ){
+	
+	$api['key'] = 'AIzaSyAwcCspNaN_qtrylz3QrhoBvuce_S71T_U';
+	
+	return $api;
+	
+}
 
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
 /**
  * Implement the Custom Header feature.
