@@ -20,6 +20,8 @@ get_header();
                     <?php } ?>
                 </div>
                 <div class="col col-sm-12 col-md-8">
+                    <h3 class="show-title"><?php the_title(); ?></h3>
+                    <h4 class="playwright">by <?php the_field("playwright"); ?></h4>
                     <?php get_template_part( 'template-parts/content', 'notitle' ); ?>
                     <div class="row">
                         <?php if (get_field("dates") && get_field("times")) { ?>
@@ -55,7 +57,7 @@ get_header();
                         'orderby'       => 'date',
                         'order'         => 'ASC',
                     )); ?>
-                    <?php if ($cast->have_posts()) { ?>
+                    <?php if ($cast->have_posts() && get_field("show_cast_pics_twice")) { ?>
                         <div class="col col-12" id="cast">
                             <h3>Cast</h3>
                             <div class="grid">

@@ -717,6 +717,12 @@ a img.aligncenter {
 .type-show > .entry-content {
   margin: 0;
 }
+h3.show-title {
+  margin-bottom: 0;
+}
+h4.playwright {
+  margin-top: 0;
+}
 .single-show #content.site-content #main {
   display: flex;
   justify-content: space-between;
