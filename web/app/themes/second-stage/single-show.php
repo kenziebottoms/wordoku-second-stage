@@ -10,81 +10,90 @@ get_header();
             <?php while ( have_posts() ) : the_post(); ?>
                 <div class="col col-sm-6 sm-offset-3 col-md-4">
                     <?php the_post_thumbnail(); ?>
-                    <h4>Location</h4>
-                    <?php $location = get_field("location"); ?>
-                    <div class="acf-map">
-                        <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
-                    </div>
-                    <?php the_field("address"); ?>
+                    <?php if (get_field("location")) { ?>
+                        <h4>Location</h4>
+                        <?php $location = get_field("location"); ?>
+                        <div class="acf-map">
+                            <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
+                        </div>
+                        <?php the_field("address"); ?>
+                    <?php } ?>
                 </div>
                 <div class="col col-sm-12 col-md-8">
                     <?php get_template_part( 'template-parts/content', 'notitle' ); ?>
                     <div class="row">
-                        <div class="col col-6">
-
-                            <?php $dates = explode(",", get_field("dates"));
-                            $times = explode(",", get_field("times")); ?>
-                            <h4>Showtimes</h4>
-                            <table class="table">
-                                <?php for ($i=0; $i<strlen(dates)-1; $i++) { ?>
-                                    <tr>
-                                        <td><?php echo $times[$i]; ?></td>
-                                        <td><?php echo $dates[$i]; ?></td>
-                                    </tr>
-                                <?php } ?>
-                            </table>
-                        </div>
-                        <div class="col col-6">
-                            <h4>Admission</h4>
-                            <div><?php the_field("admission"); ?></div>
-                            <a target="blank" class="btn-block col-6 offset-3 btn btn-outline-light" href="<?php the_field("ticket_link"); ?>">Buy Tickets</a>
-                        </div>
-                    </div>
-                    <div class="col col-12" id="cast">
-                        <h3>Cast</h3>
-                        <div class="grid">
-                            <?php $show_id = get_the_ID(); ?>
-                            <?php $cast = new WP_Query(array(
-                                'max_num_pages' => '-1',
-                                'posts_per_page' => '-1',
-                                'post_type'		=> 'cast',
-                                'meta_key'      => 'show',
-                                'meta_value'    => $show_id,
-                                'orderby'       => 'date',
-                                'order'         => 'ASC',
-                            )); ?>
-                            <?php while ($cast->have_posts()) : $cast->the_post(); ?>
-                                <?php if (has_post_thumbnail()) { ?>
-                                    <a href="#<?php the_ID(); ?>"><?php the_post_thumbnail(); ?></a>
-                                <?php } ?>
-                            <?php endwhile; ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-12" id="cast-verbose">
-                    <h3>Cast &amp; Crew</h3>
-                    <div class="grid">
-                        <?php $cast = new WP_Query(array(
-                            'max_num_pages' => '-1',
-                            'posts_per_page' => '-1',
-                            'post_type'		=> 'cast',
-                            'meta_key'      => 'show',
-                            'meta_value'    => $show_id,
-                            'orderby'       => 'date',
-                            'order'         => 'ASC',
-                        )); ?>
-                        <?php while ($cast->have_posts()) : $cast->the_post(); ?>
-                            <div class="block" id="<?php the_ID(); ?>">
-                                <?php if (has_post_thumbnail()) {
-                                    the_post_thumbnail();
-                                } ?>
-                                <h4><?php the_title(); ?></h4>
-                                <h5><?php the_field("role"); ?></h5>
-                                <?php the_content(); ?>
+                        <?php if (get_field("dates") && get_field("times")) { ?>
+                            <div class="col col-6">
+                                <?php $dates = explode(",", get_field("dates"));
+                                $times = explode(",", get_field("times")); ?>
+                                <h4>Showtimes</h4>
+                                <table class="table">
+                                    <?php for ($i=0; $i<strlen(dates)-1; $i++) { ?>
+                                        <tr>
+                                            <td><?php echo $times[$i]; ?></td>
+                                            <td><?php echo $dates[$i]; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                </table>
+                                </div>
+                        <?php } ?>
+                        <?php if (get_field("admission") && get_field("ticket_link")) { ?>
+                            <div class="col col-6">
+                                <h4>Admission</h4>
+                                <div><?php the_field("admission"); ?></div>
+                                <a target="blank" class="btn-block col-6 offset-3 btn btn-outline-light" href="<?php the_field("ticket_link"); ?>">Buy Tickets</a>
                             </div>
-                        <?php endwhile; ?>
+                        <?php } ?>
                     </div>
+                    <?php $show_id = get_the_ID(); ?>
+                    <?php $cast = new WP_Query(array(
+                        'max_num_pages' => '-1',
+                        'posts_per_page' => '-1',
+                        'post_type'		=> 'cast',
+                        'meta_key'      => 'show',
+                        'meta_value'    => $show_id,
+                        'orderby'       => 'date',
+                        'order'         => 'ASC',
+                    )); ?>
+                    <?php if ($cast->have_posts()) { ?>
+                        <div class="col col-12" id="cast">
+                            <h3>Cast</h3>
+                            <div class="grid">
+                                <?php while ($cast->have_posts()) : $cast->the_post(); ?>
+                                    <?php if (has_post_thumbnail()) { ?>
+                                        <a href="#<?php the_ID(); ?>"><?php the_post_thumbnail(); ?></a>
+                                    <?php } ?>
+                                <?php endwhile; ?>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
+                <?php $cast = new WP_Query(array(
+                    'max_num_pages' => '-1',
+                    'posts_per_page' => '-1',
+                    'post_type'		=> 'cast',
+                    'meta_key'      => 'show',
+                    'meta_value'    => $show_id,
+                    'orderby'       => 'date',
+                    'order'         => 'ASC',
+                )); ?>
+                <?php if ($cast->have_posts()) : ?>
+                    <div class="col col-12" id="cast-verbose">
+                        <h3>Cast &amp; Crew</h3>
+                        <div class="grid">
+                            <?php while ($cast->have_posts()) : $cast->the_post(); ?>
+                                <div class="block" id="<?php the_ID(); ?>">
+                                    <?php if (has_post_thumbnail()) {
+                                        the_post_thumbnail();
+                                    } ?>
+                                    <h4><?php the_title(); ?></h4>
+                                    <h5><?php the_field("role"); ?></h5>
+                                    <?php the_content(); ?>
+                                </div>
+                                <?php endwhile; ?>            
+                        </div>
+                    </div>
+                <?php endif; ?>
             <?php endwhile; ?>
         </main><!-- #main -->
     </section><!-- #primary -->

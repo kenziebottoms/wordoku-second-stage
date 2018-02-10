@@ -77,11 +77,14 @@ template {
 
 a {
   background-color: transparent;
+  color: #b19dc1;
 }
 
 a:active,
 a:hover {
   outline: 0;
+  color: #b19dc1;
+  text-decoration: underline;
 }
 
 dfn {
@@ -711,6 +714,9 @@ a img.aligncenter {
 .single-show #content.site-content {
   padding: 0;
 }
+.type-show > .entry-content {
+  margin: 0;
+}
 .single-show #content.site-content #main {
   display: flex;
   justify-content: space-between;
@@ -991,6 +997,34 @@ footer#colophon {
     padding-bottom: 0.938rem;
     padding-top: 0.938rem;
   }
+}
+
+#footer-widget {
+  border: 0;
+  text-align: center;
+  background: #393939;
+}
+#footer-widget section {
+  margin-bottom: 0;
+}
+#footer-widget .textwidget p, li {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 100;
+  line-height: 1;
+}
+#footer-widget .textwidget ul {
+  list-style-type: none;
+}
+#footer-widget .textwidget ul li {
+  display: inline-block;
+  padding: 0 .6rem 0 .4rem;
+}
+#footer-widget .textwidget ul li:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.322);
+}
+#footer-widget h3 {
+  margin: 1rem 0;
 }
 /*--------------------------------------------------------------
 # Media Query
