@@ -1,0 +1,74 @@
+.wrap { 
+    max-width: 900px; 
+    margin: 20px 20px 20px 15px; 
+}
+
+.box { 
+    margin: 20px 0 0; 
+    background: #fff; 
+    border: 1px solid #dbdbdb; 
+    padding: 20px; 
+}
+
+.greybox { 
+    margin: 10px 0 0; 
+    background: #f9f9f9; 
+    border: 1px solid #dbdbdb; 
+    padding: 20px; 
+}
+
+.greybox p { 
+    font-style: italic; 
+    color: #000000;
+}
+
+.toggleon, .toggleoff { 
+    padding: 0; 
+    overflow: hidden; 
+    width: 72px; 
+    height: 24px; 
+    background: url("<?php echo $image_button ?>") 0 0 no-repeat; 
+    text-align: center !important;
+}
+
+.toggleoff { 
+    background: url("<?php echo $image_button ?>") -72px 0 no-repeat; 
+}
+
+.fifubox {
+    border: 1px;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-style: solid;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding-right: 32px;
+    font-weight: normal;
+}
+
+th {
+    height: 25px;
+}
+
+#grad1 {
+    background: #E3FFE2;
+    background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(227,255,226,1)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(227,255,226,1)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(227,255,226,1)); /*Fx 3.6-15*/
+    background: linear-gradient(to right, rgba(255,0,0,0), rgba(227,255,226,1)); /*Standard*/
+}
+
+#grad2 {
+    background: #FFE2E2;
+    background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(255,226,226,1)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,226,226,1)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,226,226,1)); /*Fx 3.6-15*/
+    background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,226,226,1)); /*Standard*/
+}

@@ -1045,3 +1045,37 @@ footer#colophon {
 .acf-map img {
   max-width: inherit !important;
 }
+#cast .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+}
+#cast-verbose .grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 3rem;
+}
+@media screen and (min-width: 992px) {
+  #cast-verbose .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+#cast-verbose {
+  line-height: 1.5;
+}
+#cast-verbose .grid img {
+  max-height: 19rem;
+  float: right;
+  margin: 2rem 0 0 2rem;
+}
+#cast-verbose .grid .block * {
+  clear: none;
+}
+#cast-verbose h4 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #999;
+}
+#cast-verbose h5 {
+  margin-top: 0;
+}

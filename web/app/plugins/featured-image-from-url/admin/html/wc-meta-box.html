@@ -1,0 +1,37 @@
+<script><?php include 'js/wc-meta-box.js' ?></script>
+<script><?php include 'js/convert-url.js' ?></script>
+
+<!-- show alt field, remove button and image if URL was already provided -->
+
+<input id="fifu_input_alt_<?php echo $i; ?>" 
+       type="text" 
+       name="fifu_input_alt_<?php echo $i; ?>" 
+       placeholder="alt attribute (required)" 
+       value="<?php echo $alt[$i]; ?>" 
+       style="<?php echo $altWidth, $show_alt[$i] ?>" />
+
+<a id="fifu_link_<?php echo $i; ?>" 
+   class="button"
+   href="#" 
+   onClick="wcRemoveImage(<?php echo $i; ?>);" 
+   style="<?php echo $show_link[$i] ?>" >x</a>
+
+<div id="fifu_image_<?php echo $i; ?>"
+     style="<?php echo $height, $margin, $show_image[$i] ?> 
+     background:url('<?php echo $url[$i]; ?>') no-repeat center center; 
+     background-size:cover;" >
+</div>
+
+<!-- show URL field and preview button if URL was not provided yet -->
+
+<input id="fifu_input_url_<?php echo $i; ?>" 
+       type="text" 
+       name="fifu_input_url_<?php echo $i; ?>" 
+       placeholder="URL" 
+       value="<?php echo $url[$i]; ?>"
+       style="<?php echo $width, $margin, $show_url[$i] ?>" />
+
+<a id="fifu_button_<?php echo $i; ?>" 
+   class="button"
+   onClick="wcPreviewImage(<?php echo $i; ?>);" 
+   style="<?php echo $align, $margin, $show_button[$i] ?>" >Preview</a>

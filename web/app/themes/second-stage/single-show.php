@@ -40,6 +40,50 @@ get_header();
                             <a target="blank" class="btn-block col-6 offset-3 btn btn-outline-light" href="<?php the_field("ticket_link"); ?>">Buy Tickets</a>
                         </div>
                     </div>
+                    <div class="col col-12" id="cast">
+                        <h3>Cast</h3>
+                        <div class="grid">
+                            <?php $show_id = get_the_ID(); ?>
+                            <?php $cast = new WP_Query(array(
+                                'max_num_pages' => '-1',
+                                'posts_per_page' => '-1',
+                                'post_type'		=> 'cast',
+                                'meta_key'      => 'show',
+                                'meta_value'    => $show_id,
+                                'orderby'       => 'date',
+                                'order'         => 'ASC',
+                            )); ?>
+                            <?php while ($cast->have_posts()) : $cast->the_post(); ?>
+                                <?php if (has_post_thumbnail()) { ?>
+                                    <a href="#<?php the_ID(); ?>"><?php the_post_thumbnail(); ?></a>
+                                <?php } ?>
+                            <?php endwhile; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-12" id="cast-verbose">
+                    <h3>Cast &amp; Crew</h3>
+                    <div class="grid">
+                        <?php $cast = new WP_Query(array(
+                            'max_num_pages' => '-1',
+                            'posts_per_page' => '-1',
+                            'post_type'		=> 'cast',
+                            'meta_key'      => 'show',
+                            'meta_value'    => $show_id,
+                            'orderby'       => 'date',
+                            'order'         => 'ASC',
+                        )); ?>
+                        <?php while ($cast->have_posts()) : $cast->the_post(); ?>
+                            <div class="block" id="<?php the_ID(); ?>">
+                                <?php if (has_post_thumbnail()) {
+                                    the_post_thumbnail();
+                                } ?>
+                                <h4><?php the_title(); ?></h4>
+                                <h5><?php the_field("role"); ?></h5>
+                                <?php the_content(); ?>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
                 </div>
             <?php endwhile; ?>
         </main><!-- #main -->

@@ -230,8 +230,19 @@ function create_post_type() {
                 'singular_name' => __( 'Show' )
             ),
             'public' => true,
-            'has_archive' => false,
+            'supports' => array( 'title', 'editor', 'thumbnail' ), 'has_archive' => true,
             'menu_icon' => 'dashicons-tickets-alt',
+        )
+    );
+    register_post_type( 'cast',
+        array(
+            'labels' => array(
+                'name' => __( 'Cast' ),
+                'singular_name' => __( 'Cast Member' )
+            ),
+            'public' => true,
+            'supports' => array( 'title', 'editor', 'thumbnail' ), 'has_archive' => true,
+            'menu_icon' => 'dashicons-groups',
         )
     );
 }
