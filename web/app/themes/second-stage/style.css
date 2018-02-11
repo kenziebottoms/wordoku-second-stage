@@ -131,6 +131,7 @@ figure {
 hr {
   box-sizing: content-box;
   height: 0;
+  clear: both;
 }
 
 button {
@@ -1001,7 +1002,7 @@ footer#colophon {
 #footer-widget section {
   margin-bottom: 0;
 }
-#footer-widget .textwidget p, li {
+#footer-widget .textwidget p {
   margin: 1rem 0;
   font-size: 1.2rem;
   font-weight: 100;
