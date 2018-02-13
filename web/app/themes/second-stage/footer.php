@@ -50,7 +50,7 @@
 				<?php } ?>
 			</div>
             <div class="site-info">
-                &copy; <?php echo date('Y'); ?> <?php echo '<a href="'.home_url().'">'.get_bloginfo('description').'</a>'; ?>
+                &copy; <?php echo date('Y'); ?> <?php echo get_bloginfo('description'); ?>
             </div><!-- close .site-info -->
 		</div>
 	</footer><!-- #colophon -->
