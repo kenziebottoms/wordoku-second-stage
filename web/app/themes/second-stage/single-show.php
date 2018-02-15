@@ -59,12 +59,61 @@ get_header();
                     'meta_value'    => $show_id,
                     'orderby'       => 'date',
                     'order'         => 'ASC',
+                    'meta_query' => array(
+                        'relation' => 'AND',
+                        array(
+                            'key'   => 'show',
+                            'value' => $show_id
+                        ),
+                        array(
+                            'key'   => 'cast_or_crew',
+                            'value' => 'cast'
+                        )
+                    )
+                )); ?>
+
+                <?php $crew = new WP_Query(array(
+                    'max_num_pages' => '-1',
+                    'posts_per_page' => '-1',
+                    'post_type'		=> 'cast',
+                    'meta_key'      => 'show',
+                    'meta_value'    => $show_id,
+                    'orderby'       => 'date',
+                    'order'         => 'ASC',
+                    'meta_query' => array(
+                        'relation' => 'AND',
+                        array(
+                            'key'   => 'show',
+                            'value' => $show_id
+                        ),
+                        array(
+                            'key'   => 'cast_or_crew',
+                            'value' => 'crew'
+                        )
+                    )
                 )); ?>
                 <?php if ($cast->have_posts()) : ?>
                     <div class="col col-12 px-5 px-md-3" id="cast-verbose">
-                        <h3>Cast &amp; Crew</h3>
+                        <h3>Cast</h3>
                         <div class="grid">
                             <?php while ($cast->have_posts()) : $cast->the_post(); ?>
+                                <div class="block" id="<?php the_ID(); ?>">
+                                    <?php if (has_post_thumbnail()) {
+                                        the_post_thumbnail();
+                                    } ?>
+                                    <h4><?php the_title(); ?></h4>
+                                    <h5><?php the_field("role"); ?></h5>
+                                    <?php the_content(); ?>
+                                </div>
+                                <?php endwhile; ?>            
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($crew->have_posts()) : ?>
+                    <div class="col col-12 px-5 px-md-3" id="cast-verbose">
+                        <h3>Crew</h3>
+                        <div class="grid">
+                            <?php while ($crew->have_posts()) : $crew->the_post(); ?>
                                 <div class="block" id="<?php the_ID(); ?>">
                                     <?php if (has_post_thumbnail()) {
                                         the_post_thumbnail();

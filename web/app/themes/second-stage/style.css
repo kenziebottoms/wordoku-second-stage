@@ -34,6 +34,10 @@ Tags: blog, custom-menu, featured-images, threaded-comments, translation-ready, 
 # Woocommerce
 # Footer
 --------------------------------------------------------------*/
+@font-face {
+  font-family: "Aqua";
+  src: url("inc/assets/fonts/aqua.ttf");
+}
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -212,7 +216,8 @@ th {
 }
 
 blockquote {
-  font-family: "Nanum Myeongjo", serif;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
   font-size: 1.5em;
   padding: 1em;
   margin: 2rem 0;
@@ -263,6 +268,10 @@ h5 {
 p {
   margin-bottom: 1.5em;
 }
+.entry-title {
+  text-transform: uppercase;
+  font-family: "Aqua";
+}
 h1.entry-title {
   border-bottom: 1px solid rgba(211, 152, 142, 0.6);
 }
@@ -287,7 +296,7 @@ aside#secondary {
 body {
   background: #fff;
   color: rgba(0, 0, 0, 0.75);
-  font-family: "Roboto", sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-size: 18px;
   font-weight: 400;
   /* Fallback for when there is no custom background color defined. */
@@ -726,6 +735,10 @@ a img.aligncenter {
 }
 .type-show > .entry-content {
   margin: 0;
+}
+h3 {
+  font-family: "Aqua", sans-serif;
+  text-transform: uppercase;
 }
 h4.playwright {
   margin-top: -.6rem;
