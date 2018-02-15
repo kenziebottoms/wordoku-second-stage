@@ -125,7 +125,8 @@ get_header();
                                 <?php endwhile; ?>            
                         </div>
                     </div>
-                <?php endif; ?>
+                <?php endif;
+                wp_reset_query(); ?>
                 <?php if (get_field("gallery")) { ?>
                     <div class="col col-12">
                         <h3>Gallery</h3>
