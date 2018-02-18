@@ -1149,3 +1149,6 @@ footer#colophon {
 #social-links a:hover {
   color: hsl(9, 60%, 80%);
 }
+#producers .row {
+  font-size: 18px;
+}

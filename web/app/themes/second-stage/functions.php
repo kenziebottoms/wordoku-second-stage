@@ -111,6 +111,15 @@ function wp_bootstrap_starter_widgets_init() {
         'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
     ) );
+    register_sidebar( array(
+        'name'          => esc_html__( 'About Footer', 'wp-bootstrap-starter' ),
+        'id'            => 'about-footer',
+        'description'   => esc_html__( 'Add widgets to the bottom of the About Page here.', 'wp-bootstrap-starter' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
 }
 add_action( 'widgets_init', 'wp_bootstrap_starter_widgets_init' );
 

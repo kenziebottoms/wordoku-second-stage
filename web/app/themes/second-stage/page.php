@@ -33,6 +33,8 @@ get_header(); ?>
 		</main><!-- #main -->
 	</section><!-- #primary -->
 
-<?php
-get_sidebar();
-get_footer();
+<?php get_sidebar(); ?>
+<?php if (is_page("about-us")) { ?>
+	<div id="producers" class="col-12 p-3"><?php dynamic_sidebar( 'about-footer' ); ?></div>
+<?php } ?>
+<?php get_footer();
