@@ -45,7 +45,7 @@ get_header();
                             <div class="col col-12 col-lg-6">
                                 <h4>Admission</h4>
                                 <div><?php the_field("admission"); ?></div>
-                                <a target="blank" class="btn-block col-6 offset-3 btn btn-outline-light" href="<?php the_field("ticket_link"); ?>">Buy Tickets</a>
+                                <a target="blank" class="btn-block col-6 offset-3 btn btn-outline-dark" href="<?php the_field("ticket_link"); ?>">Buy Tickets</a>
                             </div>
                         <?php } ?>
                     </div>
